@@ -15,11 +15,11 @@ import java.util.ArrayList;
 
 
 public class ApiClient {
-    private ArrayList<Propietario> propietarios=new ArrayList<>();
-    private ArrayList<Inquilino> inquilinos=new ArrayList<>();
-    private ArrayList<Inmueble> inmuebles=new ArrayList<>();
-    private ArrayList<Contrato> contratos=new ArrayList<>();
-    private ArrayList<Pago> pagos=new ArrayList<>();
+    private final ArrayList<Propietario> propietarios=new ArrayList<>();
+    private final ArrayList<Inquilino> inquilinos=new ArrayList<>();
+    private final ArrayList<Inmueble> inmuebles=new ArrayList<>();
+    private final ArrayList<Contrato> contratos=new ArrayList<>();
+    private final ArrayList<Pago> pagos=new ArrayList<>();
     private static Propietario usuarioActual=null;
     private static ApiClient api=null;
 
