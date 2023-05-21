@@ -29,9 +29,9 @@ public class DetalleActivity extends AppCompatActivity {
         binding.etDireccion.setText(String.valueOf(inmueble.getDireccion()));
         binding.etTipo.setText(String.valueOf(inmueble.getTipo()));
         binding.etUso.setText(String.valueOf(inmueble.getUso()));
-       // Glide.with(DetalleActivity.this)
-              //  .load(inmueble.getImagen())
-               // .into(binding.ivFoto);
+        Glide.with(DetalleActivity.this)
+                .load(inmueble.getImagen())
+                .into(binding.ivFoto);
 
 
     }

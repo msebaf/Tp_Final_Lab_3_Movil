@@ -1,4 +1,4 @@
-package com.miempresa.tp_final_lab_3_movil.ui.slideshow;
+package com.miempresa.tp_final_lab_3_movil.ui.contratos;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -17,49 +17,58 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.miempresa.tp_final_lab_3_movil.R;
+import com.miempresa.tp_final_lab_3_movil.modelo.Contrato;
 import com.miempresa.tp_final_lab_3_movil.modelo.Inmueble;
+import com.miempresa.tp_final_lab_3_movil.modelo.Inquilino;
+import com.miempresa.tp_final_lab_3_movil.request.ApiClient;
+import com.miempresa.tp_final_lab_3_movil.ui.Inquilinos.DetalleInquilinoActivity;
+import com.miempresa.tp_final_lab_3_movil.ui.Inquilinos.PropiedadesAlquiladasFragmentAdapter;
 
 import java.util.List;
 
-public class SlideshowFragmentAdapter extends RecyclerView.Adapter<SlideshowFragmentAdapter.ViewHolder> {
+public class ContratosFragmentAdapter extends RecyclerView.Adapter<ContratosFragmentAdapter.ViewHolder> {
 
     private Context context;
     private List<Inmueble> inmuebles;
     private LayoutInflater inf;
+    private ApiClient ac;
 
-    public SlideshowFragmentAdapter(Context context, List<Inmueble> inmuebles, LayoutInflater inf) {
+    public ContratosFragmentAdapter(Context context, List<Inmueble> inmuebles, LayoutInflater inf) {
         this.context = context;
         this.inmuebles = inmuebles;
         this.inf = inf;
+        ac = ApiClient.getApi();
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ContratosFragmentAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View root = inf.inflate(R.layout.inmueble_card ,parent,false);
-        return new ViewHolder(root);
+        return new ContratosFragmentAdapter.ViewHolder(root);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull ContratosFragmentAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         //funcionaba igual sin el @SupressLint pero int position estaba e rojo...me sugirio ponerlo...ni idea...
 
 
         holder.direccion.setText(inmuebles.get(position).getDireccion()+"");
-        holder.precio.setText( "$"+inmuebles.get(position).getPrecio()+"");
-
-        Glide.with(context).
-                load(inmuebles.get(position).getImagen()).
-                diskCacheStrategy(DiskCacheStrategy.ALL).
-               into(holder.foto);
+        holder.precio.setText( "Ver Contrato");
+         Glide.with(context).
+         load(inmuebles.get(position).getImagen()).
+         diskCacheStrategy(DiskCacheStrategy.ALL).
+         into(holder.foto);
         CardView cv = holder.itemView.findViewById(R.id.cvInm);
         cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("click", "click" + position);
-                Intent intent = new Intent(context, DetalleActivity.class);
-                inmuebles.get(position).setPropietario(null);
-                intent.putExtra("inmueble", inmuebles.get(position));
+
+                Intent intent = new Intent(context, DetalleContratoActivity.class);
+                Contrato contrato = ac.obtenerContratoVigente(inmuebles.get(position));
+                contrato.getInmueble().setPropietario(null);
+
+                Log.d("click", contrato.getMontoAlquiler()+"");
+                intent.putExtra("contrato", contrato);
                 context.startActivity(intent);
 
             }
@@ -73,14 +82,13 @@ public class SlideshowFragmentAdapter extends RecyclerView.Adapter<SlideshowFrag
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView foto;
+         ImageView foto;
         TextView precio, direccion;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-          foto = itemView.findViewById(R.id.ivFoto);
+                foto = itemView.findViewById(R.id.ivFoto);
             precio = itemView.findViewById(R.id.tvPrecio);
             direccion = itemView.findViewById(R.id.tvDireccion);
         }
     }
 }
-//descomentar cuando tenga fotos

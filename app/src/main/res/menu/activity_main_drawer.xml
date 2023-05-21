@@ -16,5 +16,13 @@
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Inmuebles" />
+        <item
+            android:id="@+id/nav_propiedadesAlquiladas"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Inmuebles Alquilados" />
+        <item
+            android:id="@+id/nav_contrato"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Contratos" />
     </group>
 </menu>
