@@ -1,6 +1,8 @@
 package com.miempresa.tp_final_lab_3_movil.ui.slideshow;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,7 +41,8 @@ public class SlideshowFragmentAdapter extends RecyclerView.Adapter<SlideshowFrag
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        //funcionaba igual sin el @SupressLint pero int position estaba e rojo...me sugirio ponerlo...ni idea...
 
 
         holder.direccion.setText(inmuebles.get(position).getDireccion()+"");
@@ -53,6 +56,11 @@ public class SlideshowFragmentAdapter extends RecyclerView.Adapter<SlideshowFrag
             @Override
             public void onClick(View v) {
                 Log.d("click", "click" + position);
+                Intent intent = new Intent(context, DetalleActivity.class);
+                inmuebles.get(position).setPropietario(null);
+                intent.putExtra("inmueble", inmuebles.get(position));
+                context.startActivity(intent);
+
             }
         });
 
