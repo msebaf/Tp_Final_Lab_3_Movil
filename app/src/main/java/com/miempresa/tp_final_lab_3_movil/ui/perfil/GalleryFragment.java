@@ -1,15 +1,12 @@
-package com.miempresa.tp_final_lab_3_movil.ui.gallery;
+package com.miempresa.tp_final_lab_3_movil.ui.perfil;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -50,7 +47,7 @@ public class GalleryFragment extends Fragment {
         binding.btEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vm.actualizarPerfil(binding.etCodigo.getText().toString(),
+                vm.actualizarPerfil( binding.btEditar.getText().toString()  , binding.etCodigo.getText().toString(),
                         binding.etNombre.getText().toString(),
                         binding.etApellido.getText().toString(),
                         binding.etDni.getText().toString(),

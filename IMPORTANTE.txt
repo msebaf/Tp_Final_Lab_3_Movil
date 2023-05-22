@@ -1,3 +1,1 @@
-Todavia no pude terminarla pero entrgo antes que cierre. Faltan la vista de pagos, LogOut,
- que quede presentable, algunos detalles de navegacion y el video. Lo demas esta hecho 
-y funcionando correctamente
+App funcionando, falta navegacion (retorno), foto perfil, llamada al agitar y detalles esteticos ()

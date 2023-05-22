@@ -1,13 +1,11 @@
-package com.miempresa.tp_final_lab_3_movil.ui.slideshow;
+package com.miempresa.tp_final_lab_3_movil.ui.inmuebles;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
 import com.bumptech.glide.Glide;
-import com.miempresa.tp_final_lab_3_movil.R;
 import com.miempresa.tp_final_lab_3_movil.databinding.ActivityDetalleBinding;
-import com.miempresa.tp_final_lab_3_movil.databinding.ActivityMainBinding;
 import com.miempresa.tp_final_lab_3_movil.modelo.Inmueble;
 
 public class DetalleActivity extends AppCompatActivity {

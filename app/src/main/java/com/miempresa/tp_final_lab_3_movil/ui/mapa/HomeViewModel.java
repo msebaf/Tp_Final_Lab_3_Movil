@@ -1,4 +1,4 @@
-package com.miempresa.tp_final_lab_3_movil.ui.home;
+package com.miempresa.tp_final_lab_3_movil.ui.mapa;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

@@ -31,14 +31,15 @@ public class ContratosFragmentAdapter extends RecyclerView.Adapter<ContratosFrag
     private Context context;
     private List<Inmueble> inmuebles;
     private LayoutInflater inf;
-    private ApiClient ac;
+
 
     public ContratosFragmentAdapter(Context context, List<Inmueble> inmuebles, LayoutInflater inf) {
         this.context = context;
         this.inmuebles = inmuebles;
         this.inf = inf;
-        ac = ApiClient.getApi();
+
     }
+
 
     @NonNull
     @Override
@@ -64,11 +65,9 @@ public class ContratosFragmentAdapter extends RecyclerView.Adapter<ContratosFrag
             public void onClick(View v) {
 
                 Intent intent = new Intent(context, DetalleContratoActivity.class);
-                Contrato contrato = ac.obtenerContratoVigente(inmuebles.get(position));
-                contrato.getInmueble().setPropietario(null);
-
-                Log.d("click", contrato.getMontoAlquiler()+"");
-                intent.putExtra("contrato", contrato);
+                Inmueble inmueble = inmuebles.get(position);
+                inmueble.setPropietario(null);
+                intent.putExtra("inmueble", inmuebles.get(position));
                 context.startActivity(intent);
 
             }

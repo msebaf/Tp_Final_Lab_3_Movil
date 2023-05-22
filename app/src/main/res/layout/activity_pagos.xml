@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.inmuebles.SlideshowFragment">
+    tools:context=".ui.contratos.PagosActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvInmuebles"
+        android:id="@+id/rvPagos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 

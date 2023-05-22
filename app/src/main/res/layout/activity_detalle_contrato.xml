@@ -103,7 +103,7 @@
             android:layout_marginTop="12dp"
             android:enabled="false"
             android:text="TextView"
-            app:layout_constraintEnd_toStartOf="@+id/button"
+            app:layout_constraintEnd_toStartOf="@+id/btPagos"
             app:layout_constraintHorizontal_bias="0.193"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvMonto" />
@@ -151,7 +151,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvInmueble" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btPagos"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_marginTop="12dp"

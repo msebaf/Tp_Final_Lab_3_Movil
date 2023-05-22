@@ -1,4 +1,4 @@
-package com.miempresa.tp_final_lab_3_movil.ui.slideshow;
+package com.miempresa.tp_final_lab_3_movil.ui.inmuebles;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
