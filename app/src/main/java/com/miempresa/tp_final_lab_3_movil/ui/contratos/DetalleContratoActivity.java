@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.miempresa.tp_final_lab_3_movil.R;
@@ -26,10 +27,12 @@ public class DetalleContratoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_detalle_inquilino);
         binding = ActivityDetalleContratoBinding.inflate(getLayoutInflater());
-        vm = new ViewModelProvider(this).get(DetalleContratoViewModel.class);
         setContentView(binding.getRoot());
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        vm = new ViewModelProvider(this).get(DetalleContratoViewModel.class);
 
         inmueble = (Inmueble) getIntent().getSerializableExtra("inmueble");
 
@@ -48,15 +51,22 @@ public class DetalleContratoActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         Intent intent = new Intent(DetalleContratoActivity.this, PagosActivity.class);
                         intent.putExtra("contrato", contrato);
-
                         startActivity(intent);
                     }
                 });
             }
         });
 
-    vm.obtenerContrato(inmueble);
+        vm.obtenerContrato(inmueble);
+    }
 
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        onBackPressed();
+        return true;
     }
 }
+
+
+
+

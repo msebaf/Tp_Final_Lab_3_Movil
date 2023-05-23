@@ -67,7 +67,7 @@ public class ContratosFragmentAdapter extends RecyclerView.Adapter<ContratosFrag
                 Intent intent = new Intent(context, DetalleContratoActivity.class);
                 Inmueble inmueble = inmuebles.get(position);
                 inmueble.setPropietario(null);
-                intent.putExtra("inmueble", inmuebles.get(position));
+                intent.putExtra("inmueble", inmueble);
                 context.startActivity(intent);
 
             }
