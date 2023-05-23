@@ -1,8 +1,10 @@
 package com.miempresa.tp_final_lab_3_movil.ui.contratos;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.navigation.NavOptions;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -58,11 +62,17 @@ public class ContratosFragmentAdapter extends RecyclerView.Adapter<ContratosFrag
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(context, DetalleContratoActivity.class);
-                Inmueble inmueble = inmuebles.get(position);
-                inmueble.setPropietario(null);
-                intent.putExtra("inmueble", inmueble);
-                context.startActivity(intent);
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("inmueble", inmuebles.get(position));
+
+                NavOptions op= new NavOptions.Builder()
+                        .setLaunchSingleTop(true)
+                        .setPopUpTo(R.id.nav_contratos,true)
+                        .build();
+
+                Navigation.findNavController((Activity) context, R.id.nav_host_fragment_content_menu).navigate(R.id.nav_detalleContratoFragment, bundle);
+
 
             }
         });

@@ -35,32 +35,20 @@
         android:id="@+id/nav_contratos"
         android:name="com.miempresa.tp_final_lab_3_movil.ui.contratos.ContratoFragment"
         android:label="fragment_contrato"
-        tools:layout="@layout/fragment_contrato" >
-        <action
-            android:id="@+id/action_nav_contratos_to_detalleContratoActivity"
-            app:destination="@id/detalleContratoActivity" />
-    </fragment>
+        tools:layout="@layout/fragment_contrato" />
     <fragment
         android:id="@+id/nav_salir"
         android:name="com.miempresa.tp_final_lab_3_movil.ui.salir.SalirFragment"
         android:label="fragment_salir"
         tools:layout="@layout/fragment_salir" />
 
-    <activity
-        android:id="@+id/pagosActivity"
-        android:name="com.miempresa.tp_final_lab_3_movil.ui.contratos.PagosActivity"
-        android:label="activity_pagos"
-        tools:layout="@layout/activity_pagos" />
+
     <activity
         android:id="@+id/menuActivity"
         android:name="com.miempresa.tp_final_lab_3_movil.MenuActivity"
         android:label="app_bar_menu"
         tools:layout="@layout/app_bar_menu" />
-    <activity
-        android:id="@+id/detalleContratoActivity"
-        android:name="com.miempresa.tp_final_lab_3_movil.ui.contratos.DetalleContratoActivity"
-        android:label="activity_detalle_contrato"
-        tools:layout="@layout/activity_detalle_contrato" />
+
     <fragment
         android:id="@+id/nav_detalle_inqui"
         android:name="com.miempresa.tp_final_lab_3_movil.ui.Inquilinos.DetalleInquilinoFragment"
@@ -75,4 +63,22 @@
         android:name="com.miempresa.tp_final_lab_3_movil.ui.inmuebles.DeyalleInmuebleFragment"
         android:label="fragment_deyalle_inmueble"
         tools:layout="@layout/fragment_deyalle_inmueble" />
+    <fragment
+        android:id="@+id/nav_detalleContratoFragment"
+        android:name="com.miempresa.tp_final_lab_3_movil.ui.contratos.DetalleContratoFragment"
+        android:label="fragment_detalle_contrato"
+        tools:layout="@layout/fragment_detalle_contrato" >
+        <action
+            android:id="@+id/action_nav_detalleContratoFragment_to_nav_pagosFragment"
+            app:destination="@id/nav_pagosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_pagosFragment"
+        android:name="com.miempresa.tp_final_lab_3_movil.ui.contratos.PagosFragment"
+        android:label="fragment_pagos"
+        tools:layout="@layout/fragment_pagos" >
+        <action
+            android:id="@+id/action_nav_pagosFragment_to_nav_detalleContratoFragment"
+            app:destination="@id/nav_detalleContratoFragment" />
+    </fragment>
 </navigation>
