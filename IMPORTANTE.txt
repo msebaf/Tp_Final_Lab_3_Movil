@@ -1,1 +1,1 @@
-App funcionando, falta, foto perfil, llamada al agitar y detalles esteticos ()
+falta llamar sacudiendo y un rretroceso no funciona no identidfico el error
