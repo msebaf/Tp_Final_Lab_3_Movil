@@ -74,6 +74,7 @@ public class PropiedadesAlquiladasFragmentAdapter extends RecyclerView.Adapter<P
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("inmueble", inmueble);
 
+
                 NavOptions op= new NavOptions.Builder()
                         .setLaunchSingleTop(true)
                         .setPopUpTo(R.id.nav_propiedadesAlquiladas,true)

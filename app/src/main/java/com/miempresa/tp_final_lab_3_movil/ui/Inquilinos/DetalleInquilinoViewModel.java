@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.miempresa.tp_final_lab_3_movil.modelo.Inmueble;
 import com.miempresa.tp_final_lab_3_movil.modelo.Inquilino;
+import com.miempresa.tp_final_lab_3_movil.modelo.Propietario;
 import com.miempresa.tp_final_lab_3_movil.request.ApiClient;
 
 public class DetalleInquilinoViewModel extends AndroidViewModel {
@@ -28,7 +29,12 @@ public class DetalleInquilinoViewModel extends AndroidViewModel {
     }
 
     public void consultarInquilino(Inmueble inmueble) {
+
         ac = ApiClient.getApi();
         inquilinoLive.setValue(ac.obtenerInquilino(inmueble));
+    }
+
+    public Propietario recuperarPropietario() {
+        return ac.obtenerUsuarioActual();
     }
 }

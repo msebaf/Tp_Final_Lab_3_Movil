@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             double acceleration = Math.sqrt(x * x + y * y + z * z) - SensorManager.GRAVITY_EARTH;
             if (acceleration > 2.0 && !shaken) {
                 shaken = true;
-                requestCallPermission(); // Solicitar permiso antes de hacer la llamada
+                requestCallPermission();
             }
         }
     }

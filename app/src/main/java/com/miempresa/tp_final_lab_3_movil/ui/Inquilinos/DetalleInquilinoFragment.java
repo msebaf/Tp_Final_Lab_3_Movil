@@ -20,6 +20,8 @@ import com.miempresa.tp_final_lab_3_movil.databinding.FragmentDetalleInquilinoBi
 import com.miempresa.tp_final_lab_3_movil.databinding.FragmentPropiedadesAlquiladasBinding;
 import com.miempresa.tp_final_lab_3_movil.modelo.Inmueble;
 import com.miempresa.tp_final_lab_3_movil.modelo.Inquilino;
+import com.miempresa.tp_final_lab_3_movil.modelo.Propietario;
+import com.miempresa.tp_final_lab_3_movil.request.ApiClient;
 
 public class DetalleInquilinoFragment extends Fragment {
 
@@ -44,6 +46,8 @@ public class DetalleInquilinoFragment extends Fragment {
         Bundle bundle = getArguments();
         Inmueble inmueble = (Inmueble) bundle.getSerializable("inmueble");
 
+
+
         vm.getInquilino().observe(getViewLifecycleOwner(), new Observer<Inquilino>() {
             @Override
             public void onChanged(Inquilino inquilino) {
@@ -60,6 +64,8 @@ public class DetalleInquilinoFragment extends Fragment {
             }
         });
         vm.consultarInquilino(inmueble);
+        Propietario prop= vm.recuperarPropietario();
+        inmueble.setPropietario(prop);
 
 
 

@@ -89,39 +89,8 @@ public class MenuActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-            String title;
-            switch (destination.getId()) {
-                case R.id.nav_home:
-                    title = "Mapa de la inmobiliaria";
-                    break;
-                case R.id.nav_gallery:
-                    title = "Perfil";
-                    break;
-                case R.id.nav_slideshow:
-                    title = "Tus Inmuebles";
-                    break;
-                case R.id.nav_deyalleInmuebleFragment:
-                    title = "Datos del inmueble";
-                    break;
-                case R.id.nav_propiedadesAlquiladas:
-                    title = "Tus alquileres";
-                    break;
-                case R.id.nav_detalle_inqui:
-                    title = "Inquilino";
-                    break;
-                case R.id.nav_contratos:
-                    title = "Contratos";
-                    break;
-                case R.id.nav_detalleContratoFragment:
-                    title = "Detalle del contrato";
-                    break;
-                case R.id.nav_pagosFragment:
-                    title = "Pagos Recibidos";
-                    break;
-                default:
-                    title = "Salir";
-                    break;
-            }
+            String title = mv.seleccionarTitulo(destination.getId());
+
             actionBar.setTitle(title);
         });
     }

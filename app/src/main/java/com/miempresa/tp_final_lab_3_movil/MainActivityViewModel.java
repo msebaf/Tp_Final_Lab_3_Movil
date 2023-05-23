@@ -3,6 +3,7 @@ package com.miempresa.tp_final_lab_3_movil;
 import android.app.Application;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -31,7 +32,12 @@ public class MainActivityViewModel extends AndroidViewModel {
         return usuarioActual;
     }
     public void login(String email, String password) {
-       usuarioActual.setValue(ac.login(email, password));
+
+           Propietario propietario = ac.login(email, password);
+           if(propietario!=null){
+               usuarioActual.setValue(ac.login(email, password));
+           }
+
 
     }
 
