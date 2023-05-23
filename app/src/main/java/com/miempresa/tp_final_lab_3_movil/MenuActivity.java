@@ -3,10 +3,15 @@ package com.miempresa.tp_final_lab_3_movil;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -15,11 +20,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.miempresa.tp_final_lab_3_movil.databinding.ActivityMenuBinding;
+import com.miempresa.tp_final_lab_3_movil.modelo.Propietario;
 
 public class MenuActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMenuBinding binding;
+
+    private MenuActivityViewModel mv;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +37,40 @@ public class MenuActivity extends AppCompatActivity {
         binding = ActivityMenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
         setSupportActionBar(binding.appBarMenu.toolbar);
+        mv= ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(MenuActivityViewModel.class);
+
+        mv.getUsuarioActual().observe(this, new Observer<Propietario>() {
+            @Override
+            public void onChanged(Propietario propietario) {
+
+                View navHeader = binding.navView.getHeaderView(0);
+                ImageView imageView = navHeader.findViewById(R.id.imageView);
+                TextView textViewNombre = navHeader.findViewById(R.id.nombre);
+                TextView textViewMail = navHeader.findViewById(R.id.mail);
+
+                // Establecer la imagen del ImageView
+                imageView.setImageResource(propietario.getAvatar());
+
+                // Establecer el texto del TextView
+                textViewNombre.setText(propietario.getApellido() + " " + propietario.getNombre());
+                textViewMail.setText(propietario.getEmail() );
+
+            }
+        });
+
+        mv.buscarPropietario();
+
+
         binding.appBarMenu.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
             }
+
         });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
@@ -47,6 +83,47 @@ public class MenuActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_menu);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
+
+
+        ActionBar actionBar = getSupportActionBar();
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            String title;
+            switch (destination.getId()) {
+                case R.id.nav_home:
+                    title = "Mapa de la inmobiliaria";
+                    break;
+                case R.id.nav_gallery:
+                    title = "Perfil";
+                    break;
+                case R.id.nav_slideshow:
+                    title = "Tus Inmuebles";
+                    break;
+                case R.id.nav_deyalleInmuebleFragment:
+                    title = "Datos del inmueble";
+                    break;
+                case R.id.nav_propiedadesAlquiladas:
+                    title = "Tus alquileres";
+                    break;
+                case R.id.nav_detalle_inqui:
+                    title = "Inquilino";
+                    break;
+                case R.id.nav_contratos:
+                    title = "Contratos";
+                    break;
+                case R.id.nav_detalleContratoFragment:
+                    title = "Detalle del contrato";
+                    break;
+                case R.id.nav_pagosFragment:
+                    title = "Pagos Recibidos";
+                    break;
+                default:
+                    title = "Salir";
+                    break;
+            }
+            actionBar.setTitle(title);
+        });
     }
 
     @Override

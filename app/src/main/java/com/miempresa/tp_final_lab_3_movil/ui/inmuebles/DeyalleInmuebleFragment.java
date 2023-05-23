@@ -1,7 +1,9 @@
 package com.miempresa.tp_final_lab_3_movil.ui.inmuebles;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,6 +21,8 @@ import com.miempresa.tp_final_lab_3_movil.databinding.FragmentDeyalleInmuebleBin
 import com.miempresa.tp_final_lab_3_movil.modelo.Inmueble;
 import com.miempresa.tp_final_lab_3_movil.modelo.Inquilino;
 
+import java.util.ArrayList;
+
 public class DeyalleInmuebleFragment extends Fragment {
 
     private DeyalleInmuebleViewModel vm;
@@ -35,7 +39,7 @@ public class DeyalleInmuebleFragment extends Fragment {
 
         View root = binding.getRoot();
 
-
+    vm = new ViewModelProvider(this).get(DeyalleInmuebleViewModel.class);
         Bundle bundle = getArguments();
         Inmueble inmueble = (Inmueble) bundle.getSerializable("inmueble");
 
@@ -48,6 +52,25 @@ public class DeyalleInmuebleFragment extends Fragment {
         Glide.with(DeyalleInmuebleFragment.this)
                 .load(inmueble.getImagen())
                 .into(binding.ivFoto);
+        vm.getEstadoInm().observe(getViewLifecycleOwner(), new Observer<ArrayList<String>>() {
+            @Override
+            public void onChanged(ArrayList<String> strings) {
+                binding.btDisp.setText(strings.get(0));
+                binding.btDisp.setBackgroundColor(Color.parseColor(strings.get(1)));
+            }
+        });
+
+
+
+        vm.esatdoInmueble(inmueble);
+
+        binding.btDisp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                vm.cambiarEstado(inmueble);
+                vm.esatdoInmueble(inmueble);
+            }
+        });
 
 
 

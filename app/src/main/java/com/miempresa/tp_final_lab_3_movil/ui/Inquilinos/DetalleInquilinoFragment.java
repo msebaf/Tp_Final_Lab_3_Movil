@@ -1,5 +1,6 @@
 package com.miempresa.tp_final_lab_3_movil.ui.Inquilinos;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import com.miempresa.tp_final_lab_3_movil.R;
 
 import com.miempresa.tp_final_lab_3_movil.databinding.FragmentDetalleInquilinoBinding;
 import com.miempresa.tp_final_lab_3_movil.databinding.FragmentPropiedadesAlquiladasBinding;
+import com.miempresa.tp_final_lab_3_movil.modelo.Inmueble;
 import com.miempresa.tp_final_lab_3_movil.modelo.Inquilino;
 
 public class DetalleInquilinoFragment extends Fragment {
@@ -36,19 +38,30 @@ public class DetalleInquilinoFragment extends Fragment {
         binding = FragmentDetalleInquilinoBinding.inflate(inflater, container, false);
 
         View root = binding.getRoot();
+        vm = new ViewModelProvider(this).get(DetalleInquilinoViewModel.class);
 
 
         Bundle bundle = getArguments();
-        Inquilino inquilino = (Inquilino) bundle.getSerializable("inquilino");
+        Inmueble inmueble = (Inmueble) bundle.getSerializable("inmueble");
 
-        binding.etCodigo.setText(String.valueOf(inquilino.getIdInquilino()));
-        binding.etApellido.setText(String.valueOf(inquilino.getApellido()));
-        binding.etDni.setText(String.valueOf(inquilino.getDNI()));
-        binding.etNombre.setText(String.valueOf(inquilino.getNombre()));
-        binding.etEmail.setText(String.valueOf(inquilino.getEmail()));
-        binding.etTelefono.setText(String.valueOf(inquilino.getTelefono()));
-        binding.etGarante.setText(String.valueOf(inquilino.getNombreGarante()));
-        binding.etTelefonoGarante.setText(String.valueOf(inquilino.getTelefonoGarante()));
+        vm.getInquilino().observe(getViewLifecycleOwner(), new Observer<Inquilino>() {
+            @Override
+            public void onChanged(Inquilino inquilino) {
+
+                binding.etCodigo.setText(String.valueOf(inquilino.getIdInquilino()));
+                binding.etApellido.setText(String.valueOf(inquilino.getApellido()));
+                binding.etDni.setText(String.valueOf(inquilino.getDNI()));
+                binding.etNombre.setText(String.valueOf(inquilino.getNombre()));
+                binding.etEmail.setText(String.valueOf(inquilino.getEmail()));
+                binding.etTelefono.setText(String.valueOf(inquilino.getTelefono()));
+                binding.etGarante.setText(String.valueOf(inquilino.getNombreGarante()));
+                binding.etTelefonoGarante.setText(String.valueOf(inquilino.getTelefonoGarante()));
+
+            }
+        });
+        vm.consultarInquilino(inmueble);
+
+
 
         return root;
     }

@@ -38,7 +38,7 @@
         android:layout_width="171dp"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
-
+        android:gravity="center"
         android:background="@drawable/fondo_redondo"
         android:ems="10"
 
@@ -55,7 +55,7 @@
         android:layout_width="171dp"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
-
+        android:gravity="center"
         android:background="@drawable/fondo_redondo"
         android:ems="10"
         android:hint="Password"

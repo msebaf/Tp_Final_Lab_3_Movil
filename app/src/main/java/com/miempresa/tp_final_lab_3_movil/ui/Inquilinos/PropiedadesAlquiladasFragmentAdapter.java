@@ -67,10 +67,12 @@ public class PropiedadesAlquiladasFragmentAdapter extends RecyclerView.Adapter<P
             public void onClick(View v) {
 
 
-               Inquilino inquilino = ac.obtenerInquilino(inmuebles.get(position));
+
+               Inmueble inmueble = inmuebles.get(position);
+               inmueble.setPropietario(null);
 
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("inquilino", inquilino);
+                bundle.putSerializable("inmueble", inmueble);
 
                 NavOptions op= new NavOptions.Builder()
                         .setLaunchSingleTop(true)
