@@ -28,7 +28,7 @@ public class ContratoFragment extends Fragment {
 
     private ContratoViewModel vm;
     private FragmentContratoBinding binding;
-
+    private ArrayList<Inmueble> inmuebles;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -45,7 +45,7 @@ public class ContratoFragment extends Fragment {
         vm.getInmuebles().observe(getViewLifecycleOwner(), new Observer<ArrayList<Inmueble>>() {
             @Override
             public void onChanged(ArrayList<Inmueble> inmuebles) {
-
+                
                 ContratosFragmentAdapter adapter = new ContratosFragmentAdapter(requireContext(), inmuebles, getLayoutInflater());
                 rv.setAdapter(adapter);
             }

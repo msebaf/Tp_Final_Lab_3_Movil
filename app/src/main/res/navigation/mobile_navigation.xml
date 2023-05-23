@@ -31,10 +31,43 @@
         android:id="@+id/nav_contratos"
         android:name="com.miempresa.tp_final_lab_3_movil.ui.contratos.ContratoFragment"
         android:label="fragment_contrato"
-        tools:layout="@layout/fragment_contrato" />
+        tools:layout="@layout/fragment_contrato" >
+        <action
+            android:id="@+id/action_nav_contratos_to_detalleContratoActivity22"
+            app:destination="@id/detalleContratoActivity2" />
+    </fragment>
     <fragment
         android:id="@+id/nav_salir"
         android:name="com.miempresa.tp_final_lab_3_movil.ui.salir.SalirFragment"
         android:label="fragment_salir"
         tools:layout="@layout/fragment_salir" />
+    <activity
+        android:id="@+id/detalleActivity"
+        android:name="com.miempresa.tp_final_lab_3_movil.ui.inmuebles.DetalleActivity"
+        android:label="activity_detalle"
+        tools:layout="@layout/activity_detalle" />
+    <activity
+        android:id="@+id/detalleInquilinoActivity"
+        android:name="com.miempresa.tp_final_lab_3_movil.ui.Inquilinos.DetalleInquilinoActivity"
+        android:label="activity_detalle_inquilino"
+        tools:layout="@layout/activity_detalle_inquilino" />
+    <activity
+        android:id="@+id/pagosActivity"
+        android:name="com.miempresa.tp_final_lab_3_movil.ui.contratos.PagosActivity"
+        android:label="activity_pagos"
+        tools:layout="@layout/activity_pagos" />
+    <activity
+        android:id="@+id/menuActivity"
+        android:name="com.miempresa.tp_final_lab_3_movil.MenuActivity"
+        android:label="app_bar_menu"
+        tools:layout="@layout/app_bar_menu" />
+    <fragment
+        android:id="@+id/detalleContratoActivity2"
+        android:name="com.miempresa.tp_final_lab_3_movil.ui.contratos.DetalleContratoActivity"
+        android:label="activity_detalle_contrato"
+        tools:layout="@layout/activity_detalle_contrato" >
+        <action
+            android:id="@+id/action_detalleContratoActivity2_to_nav_contratos"
+            app:destination="@id/nav_contratos" />
+    </fragment>
 </navigation>
