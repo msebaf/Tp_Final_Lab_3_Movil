@@ -3,7 +3,6 @@ package com.miempresa.tp_final_lab_3_movil.ui.contratos;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.miempresa.tp_final_lab_3_movil.R;
-import com.miempresa.tp_final_lab_3_movil.modelo.Contrato;
 import com.miempresa.tp_final_lab_3_movil.modelo.Inmueble;
-import com.miempresa.tp_final_lab_3_movil.modelo.Inquilino;
-import com.miempresa.tp_final_lab_3_movil.request.ApiClient;
-import com.miempresa.tp_final_lab_3_movil.ui.Inquilinos.DetalleInquilinoActivity;
-import com.miempresa.tp_final_lab_3_movil.ui.Inquilinos.PropiedadesAlquiladasFragmentAdapter;
 
 import java.util.List;
 

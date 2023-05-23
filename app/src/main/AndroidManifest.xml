@@ -20,12 +20,7 @@
         <activity
             android:name=".ui.contratos.DetalleContratoActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.Inquilinos.DetalleInquilinoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.inmuebles.DetalleActivity"
-            android:exported="false" />
+
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

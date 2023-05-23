@@ -1,8 +1,10 @@
 package com.miempresa.tp_final_lab_3_movil.ui.inmuebles;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,12 +14,15 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.navigation.NavOptions;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.miempresa.tp_final_lab_3_movil.R;
 import com.miempresa.tp_final_lab_3_movil.modelo.Inmueble;
+import com.miempresa.tp_final_lab_3_movil.modelo.Inquilino;
 
 import java.util.List;
 
@@ -56,11 +61,18 @@ public class SlideshowFragmentAdapter extends RecyclerView.Adapter<SlideshowFrag
         cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("click", "click" + position);
-                Intent intent = new Intent(context, DetalleActivity.class);
-                inmuebles.get(position).setPropietario(null);
-                intent.putExtra("inmueble", inmuebles.get(position));
-                context.startActivity(intent);
+
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("inmueble", inmuebles.get(position));
+
+                NavOptions op= new NavOptions.Builder()
+                        .setLaunchSingleTop(true)
+                        .setPopUpTo(R.id.nav_slideshow,true)
+                        .build();
+
+                Navigation.findNavController((Activity) context, R.id.nav_host_fragment_content_menu).navigate(R.id.nav_deyalleInmuebleFragment, bundle);
+
 
             }
         });
